@@ -1,0 +1,223 @@
+/* Add tech-style animations and enhancements */
+.contact-section {
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: sectionEntry 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes sectionEntry {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.contact-section h2 {
+  color: #0a0a0a;
+  border-bottom: 2px solid #4a4d7a;
+  position: relative;
+  padding-left: 1rem;
+  animation: headingGlow 2s infinite alternate;
+}
+
+@keyframes headingGlow {
+  from {
+    text-shadow: 0 0 10px rgba(255,255,255,0.1);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(255,255,255,0.3);
+  }
+}
+
+.contact-info ul,
+.social-media ul {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.contact-info li,
+.social-media li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  color: #111111;
+  transition: transform 0.3s ease;
+}
+
+.contact-info li:hover,
+.social-media li:hover {
+  transform: translateX(10px);
+}
+
+.contact-info li::before,
+.social-media li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #636363;
+}
+
+/* Form Enhancements */
+.contact-form {
+  background: linear-gradient(45deg, #3a3a3a 0%, #787879 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgb(5, 5, 5);
+  overflow: hidden;
+  position: relative;
+  padding: 3rem;
+}
+
+label {
+  color: #fff;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem; 
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+input,
+textarea {
+  background: rgba(0,0,0,0.3);
+  border: 1px dashed rgb(160, 158, 158);
+  color: #fff;
+  padding: 0.9rem 1.5rem;
+  border-radius: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #201c6e;
+  box-shadow: 0 0 15px rgba(108,99,255,0.2);
+  background: rgb(110, 109, 109);
+  padding: 25px;
+}
+
+input[type="submit"] {
+  background: linear-gradient(45deg, #6c63ff, #4a43b2);
+  position: relative;
+  overflow: hidden;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+
+input[type="submit"]::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    transparent 25%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 75%);
+  transform: rotate(45deg);
+  animation: buttonGlow 3s infinite linear;
+}
+
+@keyframes buttonGlow {
+  from { transform: translateX(-100%) rotate(45deg); }
+  to { transform: translateX(100%) rotate(45deg); }
+}
+
+.social-media a {
+  color: #6c63ff;
+  position: relative;
+  padding: 0.2rem 0;
+  display: inline-block;
+}
+
+.social-media a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.social-media a:hover::after {
+  width: 100%;
+}
+
+
+/* Responsive Enhancements */
+@media (max-width: 767px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .social-media ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* Performance-focused Animations */
+@media (prefers-reduced-motion: no-preference) {
+  input[type="submit"] {
+    will-change: transform, box-shadow;
+  }
+  
+  .social-media a::after {
+    will-change: width;
+  }
+}
+
+
+/* Enhanced Responsive Design */
+@media (min-width: 768px) {
+  .contact-section {
+    padding: 3rem;
+    margin: 2rem auto;
+  }
+  
+  .contact-form {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+  }
+  
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-section {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 8px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .contact-info li,
+  .social-media li {
+    font-size: 0.9rem;
+  }
+}
